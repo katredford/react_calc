@@ -1,7 +1,7 @@
 
 import './App.css';
 import React, { useState, useReducer } from "react"
-import Todo from "./components/Todo/index.js"
+import "./style.css"
 
 export const ACTIONS = {
   ADD_TODO: "add-todo",
@@ -10,30 +10,10 @@ export const ACTIONS = {
 }
 
 function reducer(todos, action) {
-  switch (action.type) {
-    case ACTIONS.ADD_TODO:
-      return [...todos, newTodo(action.payload.name)]
-    case ACTIONS.TOGGLE_TODO:
-      return todos.map(todo => {
-        if (todo.id === action.payload.id) {
-          return {...todo, complete: !todo.complete}
-        }
-        return todo
-      })
-    case ACTIONS.DELETE_TODO:
-      return todos.filter(todo => todo.id !== action.payload.id)
-    default:
-      return todos
-      
-    // default:
-    //   return todos
-    }
+  
   }
   
-function newTodo(name) {
 
-   return {id: Date.now(), name: name, complete: false}
-  }
 
 
 export function App() {
@@ -43,21 +23,38 @@ export function App() {
   
  
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    dispatch({ type: ACTIONS.ADD_TODO, payload: {name: name} })
-    setName('')
-  }
-  console.log(todos)
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={name}
-onChange={e => setName(e.target.value)} />
-      </form>
-      {todos.map(todo => {
-        return <Todo key={todo.id} todo={todo} dispatch={dispatch} />
-      })}
+         <div className="output">
+        <div className="previous-operand">
+          
+        </div>
+        <div className="current-operand"></div>
+      </div>
+      <button
+        className="span-two"
+        
+      >
+        AC
+      </button>
+      <div> </div>
+      <button>DEL</button>
+      <button>/</button>
+      <button>*</button>
+      <button>+</button>
+      <button>-</button>
+      <button>.</button>
+      <button>=</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>0</button>
     </>
   );
 }
